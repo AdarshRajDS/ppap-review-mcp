@@ -12,7 +12,7 @@
     "build": "npm run build:ui && npm run typecheck",
     "build:ui": "vite build",
     "serve": "tsx server/index.ts",
-    "start": "npm run build && npm run serve",
+    "start": "tsx server/index.ts",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:smoke": "vitest run tests/mcp-smoke.test.ts",

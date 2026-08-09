@@ -1,0 +1,24 @@
+# Free Render Web Service for the PPAP MCP server.
+# Dashboard: https://dashboard.render.com → New → Blueprint → this repo
+# Or create a Web Service manually using the settings below.
+
+services:
+  - type: web
+    name: ppap-review-mcp
+    runtime: node
+    plan: free
+    region: frankfurt
+    branch: main
+    buildCommand: npm ci && npm run build:ui
+    startCommand: npx tsx server/index.ts
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: NODE_ENV
+        value: production
+      - key: DATA_DIR
+        value: ./data
+      # Optional: set a key in the Render dashboard, then use Bearer auth in Langdock
+      - key: MCP_API_KEY
+        sync: false

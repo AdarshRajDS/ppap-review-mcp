@@ -77,11 +77,32 @@ npm run dev:ui
 
 Shows a **Mock Development Mode** badge and loads the seeded case without an MCP host. Production builds do not enable this by default.
 
+## Free hosting (recommended: Render)
+
+Use **Render Free Web Service** for a public HTTPS MCP URL Langdock can reach.
+
+1. Go to [https://dashboard.render.com](https://dashboard.render.com) and sign up (GitHub login).
+2. **New → Web Service**
+3. Connect repo: `AdarshRajDS/ppap-review-mcp`
+4. Settings:
+   - **Runtime:** Node
+   - **Build Command:** `npm ci && npm run build:ui`
+   - **Start Command:** `npx tsx server/index.ts`
+   - **Instance type:** Free
+   - **Health Check Path:** `/health`
+5. Deploy. Your URL will look like:
+   `https://ppap-review-mcp.onrender.com`
+6. In Langdock → Integrations → MCP, enter:
+   `https://ppap-review-mcp.onrender.com/mcp`
+   Auth: **No Authentication** (unless you set `MCP_API_KEY`)
+
+Notes:
+- Free tier sleeps after ~15 minutes idle; the first request can take 30–60s to wake.
+- Netlify is only for static UI preview — do **not** use the Netlify URL in Langdock.
+
 ## Public testing / tunnels
 
-A cloud Langdock workspace needs a **reachable HTTPS** MCP endpoint.
-
-Expose the local server with any temporary HTTPS tunnel (ngrok, Cloudflare Tunnel, localtunnel, etc.):
+For quick local testing without Render, expose the local server with any temporary HTTPS tunnel (ngrok, Cloudflare Tunnel, localtunnel, etc.):
 
 ```bash
 npm run serve
