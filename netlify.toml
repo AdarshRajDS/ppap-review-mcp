@@ -1,0 +1,10 @@
+# Static UI preview only — this does NOT host the MCP /mcp endpoint for Langdock.
+# Use Railway/Render/Fly (or similar) for the Streamable HTTP MCP server.
+
+[build]
+  command = "npm run build:ui"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+  NODE_ENV = "production"
