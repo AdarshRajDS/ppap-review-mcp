@@ -1,0 +1,48 @@
+{
+  "name": "ppap-review-mcp",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "PPAP Review Workbench — MCP App for Supplier Quality Engineer review inside Langdock",
+  "license": "MIT",
+  "main": "server/index.ts",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development concurrently \"npm run watch:ui\" \"tsx watch server/index.ts\"",
+    "dev:ui": "cross-env NODE_ENV=development VITE_MOCK_MODE=true vite",
+    "watch:ui": "cross-env NODE_ENV=development vite build --watch",
+    "build": "npm run build:ui && npm run typecheck",
+    "build:ui": "vite build",
+    "serve": "tsx server/index.ts",
+    "start": "npm run build && npm run serve",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:smoke": "vitest run tests/mcp-smoke.test.ts",
+    "test:watch": "vitest"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/ext-apps": "^1.7.5",
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "tsx": "^4.23.11",
+    "zod": "^4.1.13"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "@vitejs/plugin-react": "^4.3.4",
+    "concurrently": "^9.2.1",
+    "cross-env": "^10.1.0",
+    "typescript": "^5.9.3",
+    "vite": "^6.0.0",
+    "vite-plugin-singlefile": "^2.3.0",
+    "vitest": "^3.2.0"
+  }
+}
