@@ -86,7 +86,7 @@ Use **Render Free Web Service** for a public HTTPS MCP URL Langdock can reach.
 3. Connect repo: `AdarshRajDS/ppap-review-mcp`
 4. Settings:
    - **Runtime:** Node
-   - **Build Command:** `npm ci && npm run build:ui`
+   - **Build Command:** `npm ci --include=dev && npx vite build`
    - **Start Command:** `npx tsx server/index.ts`
    - **Instance type:** Free
    - **Health Check Path:** `/health`

@@ -9,7 +9,8 @@ services:
     plan: free
     region: frankfurt
     branch: main
-    buildCommand: npm ci && npm run build:ui
+    # Include build tooling even when NODE_ENV=production during install.
+    buildCommand: npm ci --include=dev && npx vite build
     startCommand: npx tsx server/index.ts
     healthCheckPath: /health
     envVars:
